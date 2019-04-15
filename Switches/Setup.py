@@ -11,7 +11,7 @@ class Challenge1(unittest.TestCase):
         self.driver = webdriver.Chrome("../chromedriver")
 
     def teardown(self):
-        # code to close webdriver
+        # code to close webdriver.
         self.driver.close()
 
 
