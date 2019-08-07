@@ -1,7 +1,7 @@
 import unittest
 import time
-from typing import List, Any
 
+from SwitchesChallenge.DamageSwitcher import DamageSwitcher
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -84,6 +84,10 @@ class SwitchesExercise(unittest.TestCase):
 
         for m in damages:
             all_damages.append(m.get_attribute('innerHTML'))
+            damage = m.get_attribute('innerHTML')
+            DamageSwitcher().damage_type_to_count(damage)
+
+        # print()
 
         unique_damage = {}
         #
@@ -92,6 +96,32 @@ class SwitchesExercise(unittest.TestCase):
 
         switch_driver.implicitly_wait(10)
 
+    # def countDamages1(self):
+    #     damages = ['BURN', 'SIDE', 'REAR END', 'FRONT END', 'UNKNOWN', 'FRONT END', 'SIDE', 'REAR END', 'FRONT END',
+    #                'PARTIAL REPAIR',
+    #                'FRONT END', 'MINOR DENT/SCRATCHES', 'SIDE', 'FRONT END', 'FRONT END', 'FRONT END', 'FRONT END',
+    #                'FRONT END',
+    #                'UNKNOWN', 'FRONT END', 'FRONT END', 'MINOR DENT/SCRATCHES', 'ROLLOVER', 'REAR END', 'BURN - ENGINE',
+    #                'BURN',
+    #                'FRONT END', 'MINOR DENT/SCRATCHES', 'SIDE', 'FRONT END', 'UNKNOWN', 'MECHANICAL', 'FRONT END',
+    #                'UNKNOWN',
+    #                'WATER/FLOOD', 'SIDE', 'SIDE', 'WATER/FLOOD', 'MINOR DENT/SCRATCHES', 'FRONT END', 'FRONT END',
+    #                'FRONT END',
+    #                'REAR END', 'WATER/FLOOD', 'FRONT END', 'FRONT END', 'FRONT END', 'ALL OVER', 'FRONT END',
+    #                'FRONT END',
+    #                'FRONT END', 'FRONT END', 'ALL OVER', 'FRONT END', 'UNKNOWN', 'FRONT END', 'FRONT END', 'FRONT END',
+    #                'UNDERCARRIAGE', 'SIDE', 'FRONT END', 'SIDE', 'TOP/ROOF', 'FRONT END', 'REAR END', 'FRONT END',
+    #                'FRONT END',
+    #                'MECHANICAL', 'WATER/FLOOD', 'REAR END', 'REAR END', 'FRONT END', 'FRONT END', '0', 'UNDERCARRIAGE',
+    #                'WATER/FLOOD',
+    #                'TOP/ROOF', 'FRONT END', 'SIDE', 'VANDALISM', 'FRONT END', 'FRONT END', 'SIDE', 'FRONT END',
+    #                'ALL OVER', 'SIDE',
+    #                'FRONT END', 'FRONT END', 'FRONT END', 'FRONT END', 'FRONT END', 'FRONT END', 'FRONT END',
+    #                'REAR END', 'FRONT END',
+    #                'FRONT END', 'REAR END', 'FRONT END', 'FRONT END', 'REAR END', '']
+    #
+    #     DamageSwitcher.damage_type_to_count(damages)
+
     def test_start(self):
         switch_driver = Setup().setup()
         self.navigateToPage("https://www.copart.com", switch_driver)
@@ -99,45 +129,10 @@ class SwitchesExercise(unittest.TestCase):
         self.search(switch_driver)
         self.changeEntries(switch_driver, 100)
         self.countModels(switch_driver)
+        # self.countDamages1();
         self.countDamages(switch_driver)
 
         switch_driver.implicitly_wait(10)
-
-
-class DamageSwitcher(object):
-    def damage_type_to_count(self, damage_idx):
-        damage_count = 'damage_' + str(damage_idx)
-        method = getattr(self, damage_count, lambda: "MISC")
-        return method()
-
-    def damage_1(self):
-        return "REAR_END"
-
-    def damage_2(self):
-        return "FRONT END"
-
-    def damage_3(self):
-        return "MINOR DENT/SCRATCHES"
-
-    def damage_4(self):
-        return "UNDERCARRIAGE"
-
-    # def switchdamage(self, damage):
-    #     damage_type = {
-    #         "REAR END": 0,
-    #         "FRONT END": 0,
-    #         "MINOR DENT/SCRATCHES": 0,
-    #         "UNDERCARRIAGE": 0,
-    #         "MISC": 0
-    #     }
-    #
-    #     # damage_type[damage] = all_damages.count(damage)
-    #
-    #     func = damage_type.get(damage, lambda: "MISC")
-    #     # print(damage_type.get(damage, "MISC"))
-    #
-    #     return func()
-        time.sleep(15)
 
 
 if __name__ == '__main__':
