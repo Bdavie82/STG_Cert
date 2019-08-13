@@ -20,31 +20,28 @@ class DamageSwitcher():
         # print(damage_count)
         return method()
 
-    def damage_REAR(self):
+    def switchdamage(self, damage):
+        print(damage)
+        damage_type = {
+            "REAR END": self.REAREND(),
+            "FRONT END": self.FRONTEND(),
+            "MINOR DENT/SCRATCHES": self.MINORDENT_SCRATCHES(),
+            "UNDERCARRIAGE": self.UNDERCARRIAGE(),
+        }
+
+        return damage_type.get(damage, self.MISC())
+
+    def REAREND(self):
         return "REAR_END"
 
-    def damage_FRONT(self):
+    def FRONTEND(self):
         return "FRONT_END"
 
-    def damage_MINOR(self):
+    def MINORDENT_SCRATCHES(self):
         return "MINOR_DENT/SCRATCHES"
 
-    def damage_UNDERCARRIAGE(self):
+    def UNDERCARRIAGE(self):
         return "UNDERCARRIAGE"
 
-        # def switchdamage(self, damage):
-        #     damage_type = {
-        #         "REAR END": 0,
-        #         "FRONT END": 0,
-        #         "MINOR DENT/SCRATCHES": 0,
-        #         "UNDERCARRIAGE": 0,
-        #         "MISC": 0
-        #     }
-        #
-        #     # damage_type[damage] = all_damages.count(damage)
-        #
-        #     func = damage_type.get(damage, lambda: "MISC")
-        #     # print(damage_type.get(damage, "MISC"))
-        #
-        #     return func()
-        # time.sleep(15)
+    def MISC(self):
+        return "MISC"

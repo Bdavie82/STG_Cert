@@ -85,7 +85,7 @@ class SwitchesExercise(unittest.TestCase):
         for m in damages:
             all_damages.append(m.get_attribute('innerHTML'))
             damage = m.get_attribute('innerHTML')
-            DamageSwitcher().damage_type_to_count(damage)
+            print(DamageSwitcher().switchdamage(damage))
 
         # print()
 
