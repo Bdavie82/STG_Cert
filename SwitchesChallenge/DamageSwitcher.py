@@ -1,14 +1,12 @@
 class DamageSwitcher():
 
     def switchdamage(self, damage):
-        # print(damage)
         damage_type = {
             "REAR END": self.REAREND(),
             "FRONT END": self.FRONTEND(),
             "MINOR DENT/SCRATCHES": self.MINORDENT_SCRATCHES(),
             "UNDERCARRIAGE": self.UNDERCARRIAGE(),
         }
-        print(damage_type.get(damage, self.MISC()))
         return damage_type.get(damage, self.MISC())
 
     def REAREND(self):
