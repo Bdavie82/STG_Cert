@@ -50,10 +50,12 @@ Examples:
 """
 
 from __future__ import print_function, unicode_literals
+
 import os
 import sys
-from docopt import docopt
+
 import num2words
+from docopt import docopt
 
 __version__ = "0.5.9"
 __license__ = "LGPL"
