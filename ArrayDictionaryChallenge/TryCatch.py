@@ -1,12 +1,12 @@
 import unittest
 import time
 
-from TryCatchChallenge.DamageSwitcher import DamageSwitcher
-from TryCatchChallenge.ErrorHandling import *
+from ArrayDictionaryChallenge.DamageSwitcher import DamageSwitcher
+from ArrayDictionaryChallenge.ErrorHandling import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from TryCatchChallenge.Setup import Setup
+from ArrayDictionaryChallenge.Setup import Setup
 
 search_term = None
 
