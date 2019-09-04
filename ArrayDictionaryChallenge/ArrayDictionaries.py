@@ -2,6 +2,7 @@ import unittest
 import time
 
 from ArrayDictionaryChallenge.DamageSwitcher import DamageSwitcher
+from ArrayDictionaryChallenge.Array import *
 from ArrayDictionaryChallenge.ErrorHandling import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -79,15 +80,15 @@ class SwitchesExercise(unittest.TestCase):
 
     def test_start(self):
         switch_driver = Setup().setup()
-        # self.navigateToPage("https://www.copart.com", switch_driver)
+        self.navigateToPage("https://www.copart.com", switch_driver)
         # search_term = "Nissan Skyliner"
         # self.searchTerm(search_term=search_term, switch_driver=switch_driver)
         # self.search(switch_driver)
         # self.changeEntries(switch_driver)
         # self.countModels(switch_driver)
         # self.countDamages(switch_driver)
-        # ErrorHandling().clicklink(switch_driver, search_term)
-        Array().
+        ErrorHandling().clicklink(switch_driver, search_term)
+        Array().makesmodels(switch_driver=switch_driver)
 
         switch_driver.implicitly_wait(10)
 
